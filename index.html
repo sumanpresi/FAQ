@@ -27,14 +27,21 @@ p{font-size:15px;line-height:1.55;color:#666;margin:0 auto 24px;max-width:330px}
 <main class="card">
 <img class="icon" src="./icon-192.png" alt="FAQ">
 <h1>FAQ Document</h1>
-<p>Your Google Document is ready. Tap below to open it.</p>
-<a class="btn" href="https://docs.google.com/document/d/1S45W0eeV3lBunJOKlvEaHh_CecS7swXFApMTvVD5HSA/edit?tab=t.0" target="_blank" rel="noopener">Open FAQ Document</a>
+<p>Opening your Google Document…</p>
+<a class="btn" id="openBtn" href="https://docs.google.com/document/d/1S45W0eeV3lBunJOKlvEaHh_CecS7swXFApMTvVD5HSA/edit?tab=t.0" target="_blank" rel="noopener">Open FAQ Document</a>
 <div class="small">Installed app • Quick access</div>
 </main>
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
 }
+var DOC_URL = "https://docs.google.com/document/d/1S45W0eeV3lBunJOKlvEaHh_CecS7swXFApMTvVD5HSA/edit?tab=t.0";
+// Auto-redirect shortly after load so Chrome still has time to
+// recognize the page for install/update purposes, then jump straight
+// to the doc without needing a tap.
+setTimeout(function () {
+  window.location.replace(DOC_URL);
+}, 400);
 </script>
 </body>
 </html>
